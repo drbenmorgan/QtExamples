@@ -101,6 +101,7 @@ int main(int argc, char *argv[]) {
   //qDebug() << settings.value("foo/bar", "notread");
 
   settings.setValue("foo",1.23);
+  settings.setValue("foo/bar/baz", true);
 
   return 0;
 }
