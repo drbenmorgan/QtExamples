@@ -12,4 +12,5 @@ include(${QT_USE_FILE})
 add_subdirectory(Filesystem)
 add_subdirectory(Settings)
 add_subdirectory(ItemViews)
+add_subdirectory(Plugins)
 
