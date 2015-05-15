@@ -1,3 +1,3 @@
 # - Build the Qt Filesystem example
 add_executable(qt-filesystem qt-filesystem.cpp)
-target_link_libraries(qt-filesystem ${QT_QTCORE_LIBRARY})
+target_link_libraries(qt-filesystem ${QT_CORE_LIBRARY})

@@ -1,13 +1,21 @@
 # - Basic build script for Qt examples
 #
-cmake_minimum_required(VERSION 2.8.10)
+cmake_minimum_required(VERSION 3.2)
 project(QtExamples)
 
-# - Qt4 only for now
-# TODO : Qt5 support, plus checks on history of FindQt4 interface (linked
-# to which minimum CMake version to support).
-find_package(Qt4 REQUIRED QtCore)
-include(${QT_USE_FILE})
+# - Qt5, falling back to Qt4
+find_package(Qt5 5.4 COMPONENTS Core Gui Widgets)
+
+if(Qt5_FOUND)
+  set(QT_VERSION_MAJOR 5)
+  set(QT_CORE_LIBRARY Qt5::Core)
+  set(QT_GUI_LIBRARY Qt5::Gui)
+  set(QT_WIDGETS_LIBRARY Qt5::Widgets)
+else()
+  find_package(Qt4 4.8 REQUIRED QtCore QtGui)
+  set(QT_CORE_LIBRARY Qt5::Core)
+  set(QT_GUI_LIBRARY Qt5::Gui)
+endif()
 
 add_subdirectory(Filesystem)
 add_subdirectory(Settings)
