@@ -19,15 +19,37 @@
 #include <QCoreApplication>
 #include <QStringList>
 #include <QDebug>
+#include <QString>
+
+#include <QPluginLoader>
+
+#include <iostream>
+
+#include "echointerface.h"
+
+// Static plugins here via Q_IMPORT_PLUGIN
+// See http://doc.qt.io/qt-5/qtwidgets-tools-plugandpaint-example.html
 
 
 int main(int argc, char *argv[]) {
+  // Must have a QCoreApplication before we can load plugins
   QCoreApplication app(argc, argv);
+
+  // Library/plugin search paths
   QStringList paths = QCoreApplication::libraryPaths();
 
   Q_FOREACH(const QString& s, paths) {
     qDebug() << s;
   }
+
+  QPluginLoader dumpPlugin("echoplugin");
+  dumpPlugin.load();
+  std::cout << "DumpModule error  : " << dumpPlugin.errorString().toStdString() << std::endl;
+  std::cout << "DumpModule file   : " << dumpPlugin.fileName().toStdString() << std::endl;
+  std::cout << "DumpModule loaded : " << dumpPlugin.isLoaded() << std::endl;
+
+  std::cout << "DumpModule instance : " << dumpPlugin.instance() << std::endl;
+
 
   return 0;
 }

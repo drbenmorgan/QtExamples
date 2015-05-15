@@ -1,0 +1,8 @@
+{
+  "string": "some string",
+  "aBoolean" : true,
+  "aNumber": 42,
+  "countme" : [1,2,3,4],
+  "myjson" : {
+  }
+}
