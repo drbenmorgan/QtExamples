@@ -12,6 +12,7 @@ add_library(echoplugin SHARED
 
 # NB, plugins must be moc'd!!
 set_target_properties(echoplugin PROPERTIES AUTOMOC ON)
-qt5_use_modules(echoplugin Core)
-qt5_use_modules(echoplugin Gui)
-qt5_use_modules(echoplugin Widgets)
+#qt5_use_modules(echoplugin Core)
+#qt5_use_modules(echoplugin Gui)
+#qt5_use_modules(echoplugin Widgets)
+target_link_libraries(echoplugin ${QT_CORE_LIBRARY})

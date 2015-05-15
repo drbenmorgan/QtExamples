@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
     qDebug() << s;
   }
 
-  QPluginLoader dumpPlugin("echoplugin");
+  QPluginLoader dumpPlugin("libechoplugin.dylib");
   dumpPlugin.load();
   std::cout << "DumpModule error  : " << dumpPlugin.errorString().toStdString() << std::endl;
   std::cout << "DumpModule file   : " << dumpPlugin.fileName().toStdString() << std::endl;

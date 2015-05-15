@@ -41,6 +41,7 @@
 #ifndef ECHOPLUGIN_H
 #define ECHOPLUGIN_H
 
+#include <QtGlobal>
 #include <QObject>
 #include <QtPlugin>
 #include "echointerface.h"
@@ -49,11 +50,13 @@
 class EchoPlugin : public QObject, EchoInterface
 {
     Q_OBJECT
+#if QT_VERSION >= 0x050000
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.Examples.EchoInterface" FILE "echoplugin.json")
+#endif
     Q_INTERFACES(EchoInterface)
 
 public:
-    QString echo(const QString &message) Q_DECL_OVERRIDE;
+    QString echo(const QString &message);
 };
 //! [0]
 

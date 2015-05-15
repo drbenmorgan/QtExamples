@@ -38,7 +38,7 @@
 **
 ****************************************************************************/
 
-#include <QtWidgets>
+//#include <QtWidgets>
 
 #include "echoplugin.h"
 
@@ -47,4 +47,9 @@ QString EchoPlugin::echo(const QString &message)
 {
     return message;
 }
+
+#if QT_VERSION < 0x050000
+Q_EXPORT_PLUGIN2(echoplugin, EchoPlugin);
+#endif
+
 //! [0]
