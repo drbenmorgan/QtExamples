@@ -21,6 +21,8 @@
 #include <QDebug>
 #include <QString>
 
+#include <QDir>
+
 #include <QPluginLoader>
 
 #include <iostream>
@@ -36,13 +38,19 @@ int main(int argc, char *argv[]) {
   QCoreApplication app(argc, argv);
 
   // Library/plugin search paths
-  QStringList paths = QCoreApplication::libraryPaths();
+  QStringList paths = app.libraryPaths();
 
   Q_FOREACH(const QString& s, paths) {
     qDebug() << s;
   }
 
+  // For an unknown reason, this will not work with Qt4 - the search
+  // patth defined by QCoreApplication::libraryPaths does not seem to
+  // be respected, so the plugin can only be loaded if the application is
+  // run from the same directory as the plugin.
+  // seems fine on Qt5.
   QPluginLoader dumpPlugin("libechoplugin.dylib");
+  std::cout << "DumpModule file   : " << dumpPlugin.fileName().toStdString() << std::endl;
   dumpPlugin.load();
   std::cout << "DumpModule error  : " << dumpPlugin.errorString().toStdString() << std::endl;
   std::cout << "DumpModule file   : " << dumpPlugin.fileName().toStdString() << std::endl;
