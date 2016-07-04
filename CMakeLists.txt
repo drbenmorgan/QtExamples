@@ -3,6 +3,11 @@
 cmake_minimum_required(VERSION 3.3)
 project(QtExamples)
 
+# Force C++11
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # - Qt5, falling back to Qt4
 find_package(Qt5 5.4 QUIET COMPONENTS Core Gui Widgets)
 
@@ -21,4 +26,4 @@ add_subdirectory(Filesystem)
 add_subdirectory(Settings)
 add_subdirectory(ItemViews)
 add_subdirectory(Plugins)
-
+add_subdirectory(Flags)
