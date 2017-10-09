@@ -1,0 +1,7 @@
+{
+            "name" : "tstPluginC",
+         "version" : "0.0.1",
+    "dependencies" : [ 
+        { "name" : "tstPluginZ", "version" : "0.0.1" }
+    ]    
+}
